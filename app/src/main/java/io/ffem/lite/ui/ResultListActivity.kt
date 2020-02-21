@@ -329,7 +329,10 @@ class ResultListActivity : BaseActivity() {
 
         } else {
             PreferencesUtil.removeKey(this, R.string.expectedValueKey)
-            showInputDialog()
+           // showInputDialog()
+            
+             val intent = Intent(baseContext, BarcodeActivity::class.java)
+            startActivityForResult(intent, 100)
         }
     }
 
