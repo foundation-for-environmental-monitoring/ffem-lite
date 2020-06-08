@@ -64,5 +64,10 @@
     <string name= "residual_chlorine">अवशिष्ट क्लोरीन</string>)
     <string name= "launch">जारी करें</string>
     <string name="app_name" translatable="false">ffem Lite</string>
+    <string name="back">वापस</string>
+    <string name="next">आगे</string>
+    <string name="water_tests_1">पानी परीक्षण 1</string>
+    <string name="water_tests_2">पानी परीक्षण 2</string>
+    <string name="view_hierarchy">पदानुक्रम देखें</string>
 
 </resources>

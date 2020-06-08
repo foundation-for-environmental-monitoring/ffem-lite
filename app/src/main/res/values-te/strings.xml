@@ -64,5 +64,9 @@
     <string name= "residual_chlorine">అవశేష క్లోరిన్</string>
     <string name= "launch">ప్రారంభం</string>
     <string name="app_name" translatable="false">ffem Lite</string>
-
+    <string name="back">తిరిగి</string>
+    <string name="next">తరువాత</string>
+    <string name="water_tests_1">నీటి పరీక్షలు 1</string>
+    <string name="water_tests_2">నీటి పరీక్ష 2</string>
+    <string name="view_hierarchy">సోపానక్రమం చూడండి</string>
 </resources>
