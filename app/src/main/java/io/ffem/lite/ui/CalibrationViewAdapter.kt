@@ -14,6 +14,7 @@ import io.ffem.lite.model.TestInfo
 import java.util.*
 
 class CalibrationViewAdapter internal constructor(
+    private val calibrationValues: ArrayList<CalibrationValue>,
     private val testInfo: TestInfo,
     private val mListener: CalibrationItemFragment.OnCalibrationSelectedListener?
 ) :
@@ -28,8 +29,8 @@ class CalibrationViewAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.calibrationValue = testInfo.values[position]
-        val colors: List<CalibrationValue> = testInfo.values
+        holder.calibrationValue = calibrationValues[position]
+        val colors: List<CalibrationValue> = calibrationValues
 
         if (colors[position].value >= 0) {
             val format = "%." + "2" + "f"
@@ -55,7 +56,7 @@ class CalibrationViewAdapter internal constructor(
     }
 
     override fun getItemCount(): Int {
-        return testInfo.values.size / 2
+        return calibrationValues.size
     }
 
     class ViewHolder internal constructor(val mView: View) : RecyclerView.ViewHolder(mView) {

@@ -25,7 +25,8 @@
           "value": -1
         },
         {
-          "value": 0
+          "value": 0,
+          "calibrate": true
         },
         {
           "value": 0.5

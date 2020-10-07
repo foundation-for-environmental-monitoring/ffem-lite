@@ -83,7 +83,13 @@ class CalibrationItemFragment : Fragment() {
     }
 
     private fun setAdapter(testInfo: TestInfo) {
-        calibrationList.adapter = CalibrationViewAdapter(testInfo, mListener)
+        val values = ArrayList<CalibrationValue>()
+        for (value in testInfo.values) {
+            if (value.calibrate) {
+                values.add(value)
+            }
+        }
+        calibrationList.adapter = CalibrationViewAdapter(values, testInfo, mListener)
     }
 
     interface OnCalibrationSelectedListener {
