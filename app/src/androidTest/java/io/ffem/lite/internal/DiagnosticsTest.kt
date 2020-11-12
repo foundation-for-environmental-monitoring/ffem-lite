@@ -155,20 +155,6 @@ class DiagnosticsTest {
 
         pressBack()
 
-        val floatingActionButton = onView(
-            allOf(
-                withId(R.id.start_test_fab), withContentDescription(R.string.start_test),
-                isDisplayed()
-            )
-        )
-        floatingActionButton.perform(click())
-
-        onView(withText(R.string.start)).perform(click())
-
-        SystemClock.sleep(TIME_DELAY)
-
-        onView(withText(R.string.accept)).perform(click())
-
 
         val floatingActionButton2 = onView(
             allOf(
@@ -181,7 +167,6 @@ class DiagnosticsTest {
         onView(withText(R.string.start_timer)).perform(click())
 
         SystemClock.sleep(TIME_DELAY)
-
 
 
 
