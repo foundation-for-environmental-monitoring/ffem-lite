@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,6 +43,7 @@ import io.ffem.lite.util.FileUtil.getPathFromURI
 import io.ffem.lite.util.PreferencesUtil
 import io.ffem.lite.util.toast
 import kotlinx.android.synthetic.main.activity_result_list.*
+import kotlinx.android.synthetic.main.activity_timer.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -184,6 +186,12 @@ class ResultListActivity : AppUpdateActivity() {
         test_results_lst.adapter = adapter
 
         showHideList()
+
+        val button = findViewById<Button>(R.id.start_timer)
+        button.setOnClickListener{
+            val intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun showHideList() {
@@ -241,6 +249,7 @@ class ResultListActivity : AppUpdateActivity() {
         startTest.launch(intent)
     }
 
+
     private fun refreshList() {
         adapter.setTestList(db.resultDao().getResults())
         test_results_lst.adapter = adapter
@@ -257,6 +266,7 @@ class ResultListActivity : AppUpdateActivity() {
         val intent = Intent(baseContext, SettingsActivity::class.java)
         startSettings.launch(intent)
     }
+
 
     private fun performFileSearch() {
         PreferencesUtil.setBoolean(this, IS_CALIBRATION, false)
@@ -334,4 +344,5 @@ class ResultListActivity : AppUpdateActivity() {
     fun onLoadFileClick(@Suppress("UNUSED_PARAMETER") view: View) {
         performFileSearch()
     }
+
 }

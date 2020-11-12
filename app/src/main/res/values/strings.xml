@@ -116,4 +116,11 @@
     <string name="confirm_color_extract">If the color detection above is incorrect, redo the capture with better light conditions.</string>
     <string name="analyzing_photo">Analyzing photo…</string>
     <string name="luminosity">Luminosity</string>
+    <string name="start_timer">Start Timer</string>
+    <string name="Timer">Timer</string>
+    <string name="Start">Start</string>
+    <string name="Stop">Stop</string>
+    <string name="working">Is Working</string>
+    <string name="stopped">Stopped</string>
+    <string name="stop">Stop</string>
 </resources>

@@ -169,6 +169,22 @@ class DiagnosticsTest {
 
         onView(withText(R.string.accept)).perform(click())
 
+
+        val floatingActionButton2 = onView(
+            allOf(
+                withId(R.id.start_timer_fab), withContentDescription(R.string.start_timer),
+                isDisplayed()
+            )
+        )
+        floatingActionButton2.perform(click())
+
+        onView(withText(R.string.start_timer)).perform(click())
+
+        SystemClock.sleep(TIME_DELAY)
+
+
+
+
         val textView = onView(
             allOf(
                 withId(R.id.name_txt), withText(residualChlorine.name.toLocalString()),
