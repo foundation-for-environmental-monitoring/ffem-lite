@@ -127,7 +127,7 @@ class CameraFragment : Fragment() {
                         -1.0,
                         -1.0,
                         0.0,
-                        currentLuminosity.toFloat(),
+                        currentLuminosity,
                         ErrorType.NO_ERROR,
                         getSampleTestImageNumber()
                     )
@@ -158,13 +158,10 @@ class CameraFragment : Fragment() {
             lightEventListener = object : SensorEventListener {
                 override fun onSensorChanged(sensorEvent: SensorEvent) {
                     val value = sensorEvent.values[0].toInt()
-                    if (luminosity_txt != null) {
-                        if (luminosity_txt.text != value.toString()) {
-                            currentLuminosity = value
-                            indicator_lum.luminosity = value.toFloat()
-                            indicator_lum.invalidate()
-                            luminosity_txt.text = value.toString()
-                        }
+                    if (currentLuminosity != value) {
+                        currentLuminosity = value
+                        val lux = getString(R.string.brightness) + ": $value"
+                        luminosity_txt?.text = lux
                     }
                 }
 
@@ -356,7 +353,7 @@ class CameraFragment : Fragment() {
         card_overlay.animate()
             .setStartDelay(100)
             .alpha(0.0f)
-            .setDuration(4000)
+            .setDuration(8000)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     if (card_overlay != null) {
