@@ -160,8 +160,11 @@ class CameraFragment : Fragment() {
                     val value = sensorEvent.values[0].toInt()
                     if (currentLuminosity != value) {
                         currentLuminosity = value
-                        val lux = getString(R.string.brightness) + ": $value"
-                        luminosity_txt?.text = lux
+                        luminosity_txt?.text = value.toString()
+                        if (indicator_lum != null) {
+                            indicator_lum.luminosity = value
+                            indicator_lum.invalidate()
+                        }
                     }
                 }
 

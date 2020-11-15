@@ -11,11 +11,17 @@ import kotlin.math.max
 import kotlin.math.min
 
 class LuminosityIndicator : View {
-    var luminosity: Float = 0f
+    var luminosity: Int = 0
     private var barPaint: Paint = Paint()
     private var redPaint: Paint = Paint()
+    private var yellowPaint: Paint = Paint()
     private var greenPaint: Paint = Paint()
     private val path = Path()
+
+    private var redZone1: Int = 0
+    private var redZone2: Int = 0
+    private var greenZoneStart: Int = 0
+    private var greenZoneEnd: Int = 0
 
     constructor(context: Context?) : super(context) {
         init()
@@ -30,6 +36,7 @@ class LuminosityIndicator : View {
         barPaint.isAntiAlias = true
 
         redPaint.color = Color.RED
+        yellowPaint.color = Color.YELLOW
         greenPaint.color = ResourcesCompat.getColor(resources, R.color.bright_green, null)
     }
 
@@ -44,6 +51,13 @@ class LuminosityIndicator : View {
             )
             barPaint.shader = shader
         }
+
+        val interval = measuredWidth / 6
+        redZone1 = interval
+        greenZoneStart = interval * 2
+        greenZoneEnd = interval * 4
+        redZone2 = interval * 5
+
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -60,8 +74,12 @@ class LuminosityIndicator : View {
         path.lineTo(pos + 20, 0f)
         path.lineTo(pos, 30f)
         path.close()
-        if (pos < measuredWidth / 4 || pos > measuredWidth - (measuredWidth / 4)) {
+
+
+        if (pos <= redZone1 || pos >= redZone2) {
             canvas.drawPath(path, redPaint)
+        } else if ((pos > redZone1 && pos < greenZoneStart) || (pos > greenZoneEnd && pos < redZone2)) {
+            canvas.drawPath(path, yellowPaint)
         } else {
             canvas.drawPath(path, greenPaint)
         }
