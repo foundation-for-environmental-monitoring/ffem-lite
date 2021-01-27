@@ -124,4 +124,6 @@
     <string name="tilt_forwards">Tilt phone forwards</string>
     <string name="tilt_left_forwards">Tilt phone left side forwards</string>
     <string name="tilt_left_backwards">Tilt phone left side backwards</string>
+    <string name="soil_tests_2">Soil Tests 1</string>
+    <string name="soil_tests_1">Soil Tests 1</string>
 </resources>

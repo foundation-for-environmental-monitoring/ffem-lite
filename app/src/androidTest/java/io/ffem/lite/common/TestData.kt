@@ -26,6 +26,10 @@ val phosphate = TestDetails(
     "Phosphate", "0242ac120002", R.string.water_tests_2,
     2, riskType = RiskType.SAFETY
 )
+val organicCarbon = TestDetails(
+        "Organic Carbon", "ce28356f45bc", R.string.soil_tests_1,
+        0
+)
 val invalidTest = TestDetails("Residual Chlorine", "ad0d47bcc96b", R.string.water_tests_2, 2)
 
 val testDataList = mutableMapOf(
@@ -68,7 +72,8 @@ val qrTestDataList = mutableMapOf(
     1 to TestData(pH, expectedResultError = ErrorType.NO_MATCH),
     2 to TestData(iron, 0.5, 0.25, risk = RiskLevel.HIGH),
     3 to TestData(phosphate, 1.8, 0.47, risk = RiskLevel.HIGH),
-    4 to TestData(iron, 0.5, 0.25, risk = RiskLevel.HIGH)
+    4 to TestData(iron, 0.5, 0.25, risk = RiskLevel.HIGH),
+    5 to TestData(organicCarbon, 2.1, 0.33)
 )
 
 data class TestData(
