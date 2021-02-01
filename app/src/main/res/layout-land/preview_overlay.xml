@@ -5,12 +5,13 @@
     android:id="@+id/camera_ui_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".ui.BarcodeActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/card_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_width="500dp"
+        android:layout_height="370dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +89,17 @@
         android:textColor="#EEEEEE"
         app:layout_constraintTop_toBottomOf="@+id/card_overlay"
         tools:text="Brightness: 30" />
+
+    <ImageView
+        android:id="@+id/rotation_arrow"
+        android:layout_width="90dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/luminosity_txt" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/take_photo_btn"

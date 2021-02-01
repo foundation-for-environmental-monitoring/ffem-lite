@@ -20,6 +20,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
@@ -95,10 +96,12 @@ class CameraFragment : Fragment() {
             val message = intent.getStringExtra(ERROR_MESSAGE)
             val scanProgress = intent.getIntExtra(SCAN_PROGRESS, 0)
             val messageOverlay = view?.findViewById<TextView>(R.id.message_overlay)
+            val rotateImage = view?.findViewById<ImageView>(R.id.rotation_arrow)
 
-            if (messageOverlay != null && !message.isNullOrEmpty()) {
+            if (messageOverlay != null && rotateImage != null && !message.isNullOrEmpty()) {
                 messageOverlay.text = message
                 messageOverlay.visibility = VISIBLE
+                rotateImage.rotation = 90f
             } else {
                 mainScope.cancel(null)
                 mainScope.launch {
@@ -142,7 +145,6 @@ class CameraFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mainExecutor = ContextCompat.getMainExecutor(requireContext())
         executorService = Executors.newFixedThreadPool(1)
-
         broadcastManager = LocalBroadcastManager.getInstance(requireContext())
 
         sensorManager = requireActivity().getSystemService(SENSOR_SERVICE) as SensorManager
@@ -254,12 +256,12 @@ class CameraFragment : Fragment() {
     private fun bindCameraUseCases() {
 
         // Get screen metrics used to setup camera for full screen resolution
-        metrics = DisplayMetrics().also { binding.cameraPreview.display?.getRealMetrics(it) }
+        metrics = DisplayMetrics().also { binding.cameraPreview.display.getRealMetrics(it) }
 //        Timber.d("Screen metrics: ${metrics.widthPixels} x ${metrics.heightPixels}")
         val screenAspectRatio = aspectRatio(metrics.widthPixels, metrics.heightPixels)
 //        Timber.d("Preview aspect ratio: $screenAspectRatio")
 
-        val rotation = binding.cameraPreview.display?.rotation
+        val rotation = binding.cameraPreview.display.rotation
 
         // Bind the cameraProvider to the LifeCycleOwner
         val cameraSelector =
@@ -273,7 +275,7 @@ class CameraFragment : Fragment() {
             // Preview
             preview = Preview.Builder()
                 .setTargetAspectRatio(screenAspectRatio)
-                .setTargetRotation(rotation!!)
+                .setTargetRotation(rotation)
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.cameraPreview.surfaceProvider)
