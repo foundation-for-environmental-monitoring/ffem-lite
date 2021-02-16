@@ -25,6 +25,7 @@
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -115,6 +116,23 @@
             app:tint="@android:color/white" />
 
         <include layout="@layout/app_bar_layout" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="66dp"
+            android:layout_height="46dp"
+            android:background="@android:color/holo_orange_light"
+            android:backgroundTint="#585858"
+            android:padding="10dp"
+            android:text="@string/logout"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

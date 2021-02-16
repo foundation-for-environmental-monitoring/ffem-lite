@@ -1,10 +1,7 @@
 package io.ffem.lite.ui
 
 import android.app.AlertDialog
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -16,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +21,10 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.BindingAdapter
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 import io.ffem.lite.BuildConfig
 import io.ffem.lite.R
 import io.ffem.lite.app.App
@@ -79,11 +81,17 @@ fun getResultString(view: TextView, result: TestResult) {
     }
 }
 
-class ResultListActivity : AppUpdateActivity() {
+class ResultListActivity : AppUpdateActivity(){
     private lateinit var binding: ActivityResultListBinding
     private lateinit var db: AppDatabase
     private var appIsClosing: Boolean = false
     private lateinit var broadcastManager: LocalBroadcastManager
+    lateinit var logout: Button
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+
+    private val auth by lazy {
+        FirebaseAuth.getInstance()
+    }
 
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -211,6 +219,21 @@ class ResultListActivity : AppUpdateActivity() {
                 val alertDialog = builder.create()
                 alertDialog.show()
                 return
+            }
+        }
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        logout = findViewById(R.id.logout)
+        logout.setOnClickListener {
+            mGoogleSignInClient.signOut().addOnCompleteListener {
+                val intent = Intent(this, LoginScreen::class.java)
+                startActivity(intent)
+                finish()
             }
         }
 
@@ -367,14 +390,13 @@ class ResultListActivity : AppUpdateActivity() {
                                 toast(getString(R.string.invalid_image), Toast.LENGTH_LONG)
                             }
                         } catch (e: Exception) {
-                            e.message?.let { it1 -> toast(it1, Toast.LENGTH_LONG) }
+                            e.message?.let { it1 -> toast(it1, Toast.LENGTH_LONG) } }
                         }
-                    }
-                }
+                     }
+                 }
             }
-        }
 
-    fun onLoadFileClick(@Suppress("UNUSED_PARAMETER") view: View) {
-        performFileSearch()
-    }
+            fun onLoadFileClick(@Suppress("UNUSED_PARAMETER") view: View) {
+                performFileSearch()
+        }
 }

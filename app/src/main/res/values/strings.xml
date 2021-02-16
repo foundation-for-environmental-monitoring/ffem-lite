@@ -124,4 +124,10 @@
     <string name="tilt_forwards">Tilt phone forwards</string>
     <string name="tilt_left_forwards">Tilt phone left side forwards</string>
     <string name="tilt_left_backwards">Tilt phone left side backwards</string>
+    <string name="no_location_text" />
+    <string name="google_login">Login</string>
+    <string name="sign_in_with_google">Sign In</string>
+    <string name="logout">Logout</string>
+    <string name="preference_file_key" />
+    <string name="ffem_lite">ffem Lite</string>
 </resources>
