@@ -182,8 +182,10 @@ class BarcodeActivity : BaseActivity(),
             }
             setResult(Activity.RESULT_OK, resultIntent)
         }
+        val intent = Intent(baseContext, UserDetails::class.java)
+        startActivity(intent)
         finish()
-    }
+        }
 
     private fun sendResultToCloudDatabase(testInfo: TestInfo) {
         if (!BuildConfig.INSTRUMENTED_TEST_RUNNING.get()) {

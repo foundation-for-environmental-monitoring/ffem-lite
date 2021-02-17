@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.ffem.lite.ui
 
 import android.app.AlertDialog
@@ -88,10 +90,6 @@ class ResultListActivity : AppUpdateActivity(){
     private lateinit var broadcastManager: LocalBroadcastManager
     lateinit var logout: Button
     lateinit var mGoogleSignInClient: GoogleSignInClient
-
-    private val auth by lazy {
-        FirebaseAuth.getInstance()
-    }
 
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {

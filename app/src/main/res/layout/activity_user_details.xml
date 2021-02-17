@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textAlignment="textStart"
+    app:layout_constrainedHeight="true"
+    tools:context=".ui.UserDetails">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="432dp"
+        android:layout_height="47dp"
+        android:layout_gravity="clip_horizontal"
+        app:srcCompat="@mipmap/ic_launcher_elongated" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:autofillHints=""
+        android:fontFamily="sans-serif-light"
+        android:inputType="textPersonName"
+        android:text="@string/Name" />
+
+    <TextView
+        android:id="@+id/waterSource"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/select_water_source"
+        android:textSize="20sp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_margin="20dp"
+        android:hint="@string/hint" />
+
+    <EditText
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:inputType="textPersonName"
+        android:text="Description"
+        android:textAlignment="textStart"
+        android:textDirection="firstStrongLtr"
+        android:textIsSelectable="true"
+        android:textStyle="normal" />
+
+    <Button
+        android:id="@+id/foreground_only_location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="fill"
+        android:insetLeft="20dp"
+        android:text="@string/start_location_updates_button_text"
+        app:iconGravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/output_text_view"
+        android:layout_width="377dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_border"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foreground_only_location_button" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:insetLeft="130dp"
+        android:text="@string/submit"
+        android:textColor="@color/diagnostic_option_background"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+</LinearLayout>

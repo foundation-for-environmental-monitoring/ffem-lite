@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package io.ffem.lite.ui
 
 import android.content.Intent

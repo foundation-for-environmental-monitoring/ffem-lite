@@ -41,6 +41,7 @@ class ResultFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         if (activity is ResultViewActivity) {
             binding.submitBtn.visibility = GONE
         } else {
@@ -189,9 +190,8 @@ class ResultFragment : Fragment() {
             if (!analyzedImagePath.exists()) {
                 binding.analyzedPhotoLyt.visibility = GONE
             }
-            binding.submitBtn.setText(R.string.close)
+            binding.submitBtn.setText(R.string.close) }
         }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
