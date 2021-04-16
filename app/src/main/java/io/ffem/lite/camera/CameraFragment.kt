@@ -336,13 +336,9 @@ class CameraFragment : Fragment() {
         cameraContainer = view.findViewById(R.id.camera_ui_container)
         cardOverlay = view.findViewById(R.id.card_overlay)
 
-        if (manualCaptureOnly()) {
-            takePhotoButton!!.visibility = VISIBLE
-            takePhotoButton!!.setOnClickListener {
-                colorCardAnalyzer.takePhoto()
-            }
-        } else {
-            takePhotoButton!!.visibility = GONE
+        takePhotoButton!!.visibility = VISIBLE
+        takePhotoButton!!.setOnClickListener {
+            colorCardAnalyzer.takePhoto()
         }
 
         cardOverlay!!.setImageDrawable(
