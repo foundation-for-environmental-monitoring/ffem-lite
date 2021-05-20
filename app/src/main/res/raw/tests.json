@@ -275,6 +275,7 @@
       "unit": "mg/l",
       "minMarginError": 0.16,
       "riskType": "quantity",
+      "formula": "(%1$f * 5)",
       "risks": [
         {
           "value": 0,
