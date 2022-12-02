@@ -15,6 +15,7 @@
     <color name="colorPrimarySurface">#ffffff</color>
 
     <color name="buttonTextColor">#505050</color>
+    <color name="borderlessButtonTextColor">#474747</color>
     <color name="buttonBackground">#EAE6DC</color>
 
     <color name="tabTextColor">#D6D6D6</color>
